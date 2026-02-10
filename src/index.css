@@ -1,0 +1,98 @@
+/* Dark Mode Theme */
+:root {
+  --primary-gradient: linear-gradient(135deg, #FF00CC 0%, #333399 100%);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+}
+
+body {
+  background: radial-gradient(circle at center, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Scrollbar Hiding */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Upload Card Glassmorphism */
+.upload-card {
+  background: var(--surface-color) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: var(--text-primary);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upload-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.icon-gradient {
+  fill: url(#icon-gradient) #FF00CC;
+  /* Fallback */
+  filter: drop-shadow(0 0 5px rgba(255, 0, 204, 0.5));
+}
+
+/* Custom Buttons */
+.btn-custom-primary {
+  background: var(--primary-gradient);
+  border: none;
+  color: white;
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+
+.btn-custom-primary:hover {
+  opacity: 0.9;
+  color: white;
+}
+
+.btn-custom-outline {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-custom-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
+  color: white;
+}
+
+/* Reel Viewer Container */
+.reel-container {
+  max-width: 480px;
+  margin: 0 auto;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  background-color: #000;
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Video Card Overlay Gradient */
+.video-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 50%);
+  pointer-events: none;
+}
