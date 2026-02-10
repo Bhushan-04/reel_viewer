@@ -11,7 +11,7 @@ A serverless "YouTube Shorts" style video viewer built with React, Vite, and Clo
 
 ## Stack
 - **Framework**: React + Vite + TypeScript
-- **Styling**: Bootstrap 5 + Custom CSS (Glassmorphism)
+- **Styling**: Bootstrap 5 
 - **State**: Zustand
 - **Media**: Cloudinary (for storage and delivery)
 - **Gestures**: SwiperJS
