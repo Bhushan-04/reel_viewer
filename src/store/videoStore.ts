@@ -13,9 +13,11 @@ interface VideoState {
     videos: VideoItem[];
     isViewerActive: boolean;
     isLoading: boolean;
+    isMuted: boolean;
     uploadProgress: { [key: string]: number };
     addVideos: (files: File[]) => Promise<void>;
     toggleViewer: () => void;
+    toggleMute: () => void;
     clearVideos: () => void;
     removeVideo: (id: string) => void;
     init: () => Promise<void>;
@@ -25,6 +27,7 @@ export const useVideoStore = create<VideoState>((setState) => ({
     videos: [],
     isViewerActive: false,
     isLoading: false,
+    isMuted: false,
     uploadProgress: {},
 
     init: async () => {
@@ -87,6 +90,12 @@ export const useVideoStore = create<VideoState>((setState) => ({
     toggleViewer: () => {
         setState((state) => ({
             isViewerActive: !state.isViewerActive,
+        }));
+    },
+
+    toggleMute: () => {
+        setState((state) => ({
+            isMuted: !state.isMuted,
         }));
     },
 

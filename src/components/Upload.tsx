@@ -50,21 +50,14 @@ const Upload: React.FC = () => {
     return (
         <Container className="d-flex align-items-center justify-content-center vh-100">
             <Card
-                className={`shadow-lg border-0 upload-card`}
-                style={{
-                    width: '400px',
-                    transition: 'all 0.3s ease',
-                    transform: isDragging ? 'scale(1.02)' : 'scale(1)',
-                    borderColor: isDragging ? '#FF00CC' : 'rgba(255, 255, 255, 0.1)',
-                    boxShadow: isDragging ? '0 0 20px rgba(255, 0, 204, 0.3)' : ''
-                }}
+                className={`shadow-lg border-0 upload-card upload-card-hover upload-card-container ${isDragging ? 'dragging' : ''}`}
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragLeave}
                 onDrop={handleDrop}
             >
                 <CardBody className="text-center p-5">
                     <div className="mb-4">
-                        <FaCloudUploadAlt size={64} style={{ color: '#FF00CC', filter: 'drop-shadow(0 0 8px rgba(255,0,204,0.4))' }} />
+                        <FaCloudUploadAlt size={64} className="icon-filter" />
                     </div>
                     <h3 className="mb-3 fw-bold">Upload Reels</h3>
 
@@ -74,13 +67,12 @@ const Upload: React.FC = () => {
                             {videos.length === 0 ? 'Syncing with Cloudinary...' : 'Uploading...'}
                         </div>
                     ) : (
-                        <p className="text-secondary mb-4" style={{ fontSize: '0.9rem' }}>
+                        <p className="text-secondary mb-4 small">
                             {videos.length > 0 ? `Synced: ${videos.length} videos found.` : 'Cloud is empty. Start by uploading!'}
                         </p>
                     )}
 
                     <div className="d-grid gap-3 mb-4">
-                        {/* File Upload */}
                         <input
                             type="file"
                             multiple
@@ -93,7 +85,6 @@ const Upload: React.FC = () => {
                             <FaFileVideo className="me-2" /> Select Videos
                         </Button>
 
-                        {/* Folder Upload - webkitdirectory usage */}
                         <input
                             type="file"
                             ref={folderInputRef}
