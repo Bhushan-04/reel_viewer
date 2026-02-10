@@ -105,7 +105,7 @@ const Upload: React.FC = () => {
 
                     {videos.length > 0 && (
                         <div className="mt-4 pt-3 border-top border-secondary">
-                            <p className="text-success fw-bold">{videos.length} videos ready</p>
+                            <p className="text-accent fw-bold">{videos.length} videos ready</p>
                             <Button className="btn-custom-primary w-100" size="lg" onClick={toggleViewer}>
                                 Watch Reels
                             </Button>

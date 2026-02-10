@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useVideoStore } from '../store/videoStore';
 import VideoCard from './VideoCard';
 import { Button } from 'reactstrap';
@@ -9,26 +9,30 @@ import 'swiper/css';
 
 const ReelViewer: React.FC = () => {
     const { videos, toggleViewer } = useVideoStore();
+    const [appHeight, setAppHeight] = useState(window.innerHeight);
+
+    useEffect(() => {
+        const updateHeight = () => setAppHeight(window.innerHeight);
+        window.addEventListener('resize', updateHeight);
+        updateHeight();
+        return () => window.removeEventListener('resize', updateHeight);
+    }, []);
 
     return (
-        <div className="d-flex justify-content-center position-relative w-100 vh-100 overflow-hidden bg-transparent">
+        <div
+            className="d-flex justify-content-center position-relative w-100 overflow-hidden bg-transparent"
+            style={{ height: `${appHeight}px` }}
+        >
             <Button
                 color="link"
                 onClick={toggleViewer}
-                className="position-absolute top-0 start-0 z-3 text-white text-decoration-none fs-4 rounded-circle d-flex align-items-center justify-content-center p-0"
-                style={{
-                    width: '50px',
-                    height: '50px',
-                    margin: '20px',
-                    background: 'rgba(255,255,255,0.1)',
-                    backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255,255,255,0.2)'
-                }}
+                className="position-absolute top-0 start-0 z-3 text-white text-decoration-none fs-5 back-btn p-0"
+                style={{ margin: '20px' }}
             >
                 <FaArrowLeft />
             </Button>
 
-            <div className="reel-container h-100 w-100 position-relative" style={{ maxWidth: '480px' }}>
+            <div className="reel-container w-100 position-relative" style={{ maxWidth: '480px', height: `${appHeight}px` }}>
                 <Swiper
                     direction={'vertical'}
                     mousewheel={{
@@ -38,11 +42,11 @@ const ReelViewer: React.FC = () => {
                         thresholdTime: 800
                     }}
                     modules={[Mousewheel]}
-                    className="h-100 w-100"
-                    style={{ height: '100vh' }}
+                    className="w-100"
+                    style={{ height: `${appHeight}px` }}
                 >
                     {videos.map((video) => (
-                        <SwiperSlide key={video.id} className="h-100 w-100">
+                        <SwiperSlide key={video.id} style={{ height: `${appHeight}px` }}>
                             {({ isActive }) => (
                                 <VideoCard video={video} isActive={isActive} />
                             )}

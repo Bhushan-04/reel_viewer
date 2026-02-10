@@ -11,7 +11,7 @@ function App() {
     }, [init])
 
     return (
-        <div style={{ width: '100%', height: '100vh', overflow: 'hidden', backgroundColor: '#000' }}>
+        <div className="w-100" style={{ backgroundColor: 'var(--bg-dark)' }}>
             {isViewerActive ? <ReelViewer /> : <Upload />}
         </div>
     )

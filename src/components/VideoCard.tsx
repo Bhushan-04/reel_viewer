@@ -52,7 +52,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, isActive }) => {
                 loop
                 muted={isMuted}
                 playsInline
-                className="w-100 h-100 object-fit-cover"
+                className="w-100 h-100 object-fit-contain"
                 style={{ cursor: 'pointer' }}
                 onClick={togglePlay}
             />
